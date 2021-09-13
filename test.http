@@ -1,0 +1,68 @@
+### Get Users
+GET http://localhost:3000/users
+
+### Get User by Id
+GET http://localhost:3000/user/4
+
+
+### Update user by Id
+PUT http://localhost:3000/user/1
+content-type: application/json
+
+{
+  "id": 1,
+  "email": "test@test.fr",
+  "password": "1234",
+  "first_name": "Jean",
+  "last_name": "Dujardin",
+  "role": "public"
+}
+
+### Delete User by User Id
+DELETE http://localhost:3000/user/3
+
+
+### Get Beds
+GET http://localhost:3000/beds
+
+### Create Bed
+POST http://localhost:3000/bed
+content-ype: application/json
+
+{
+    "num":155,
+    "floor":4,
+    "availability":true,
+    "occupancy_time":0
+}
+
+### Assign bed to user
+POST http://localhost:3000/bed/update
+content-type: application/json
+
+{
+  "bedId": 4,
+  "userId": 1
+}
+
+
+### Register
+POST http://localhost:3000/signup
+content-type: application/json
+
+{
+  "email": "pipo@pipo.fr",
+  "password": "test",
+  "first_name": "Jean-Claude",
+  "last_name":"Dus",
+  "role": "public"
+}
+
+### Login 
+POST http://localhost:3000/login
+content-type: application/json
+
+{
+  "email": "pipo@pipo.fr",
+  "password": "test"
+}
