@@ -1,0 +1,63 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100;0,300;1,100;1,300&display=swap');
+
+body {
+  font-family: 'Raleway';
+  background-color: #F3F2EE;
+}
+
+.title {
+  padding: 2rem 0;
+  box-shadow: 0px 15px 12px 0px rgba(0,0,0,0.84);
+  -webkit-box-shadow: 0px 15px 12px 0px rgba(0,0,0,0.84);
+  -moz-box-shadow: 0px 15px 12px 0px rgba(0,0,0,0.84);
+  background-color: grey;
+  text-align: center;
+  color: blue;
+  font-size: 2rem;
+  font-weight: bolder;
+  text-transform: uppercase;
+}
+
+main {
+  width: 70%;
+  margin: 0 auto;
+}
+
+.description {
+  margin-top: 6rem;
+}
+.description__text {
+  margin-top: 2rem;
+}
+.description__text__italic {
+  margin: 2rem 0;
+  font-style: italic;
+}
+
+.routes {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.routes__route {
+  text-decoration: none;
+  list-style: none;
+}
+
+footer {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: grey;
+  padding: 2rem 0;
+  box-shadow: 0px -15px 12px 0px rgba(0,0,0,0.84);
+  -webkit-box-shadow: 0px -15px 12px 0px rgba(0,0,0,0.84);
+  -moz-box-shadow: 0px -15px 12px 0px rgba(0,0,0,0.84);
+}
+
+footer p {
+  text-align: center;
+  color: blue;
+}

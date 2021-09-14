@@ -8,13 +8,16 @@ const bedController = require('../controllers/bedController');
 // User
 router.get('/users', userController.getAllUsers);
 router.get('/user/:id', userController.getUserById);
-router.put('/user/:id', userController.updateUser);
-router.delete('/user/:id', userController.deleteUser);
+router.put('/user/update/:id', userController.updateUser);
+router.delete('/user/delete/:id', userController.deleteUser);
 
 // Bed
 router.get('/beds', bedController.getAllBed);
-router.post('/bed', bedController.createBed);
-router.post('/bed/update', bedController.updateBed);
+router.get('/bed/user/:id', bedController.getBedByUserId);
+router.get('/bed/floor/:floor', bedController.getBedByFloor);
+router.post('/bed/create', bedController.createBed);
+router.post('/bed/assign', bedController.assignBed);
+router.post('/bed/unassign', bedController.unassignBed);
 
 // Login - Register
 router.post('/login', signupController.login);

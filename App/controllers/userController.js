@@ -2,9 +2,8 @@ const { User } = require('../models');
 
 const userController = {
   getAllUsers: (req, res) => {
-    User.findAll({
-      include: ['bed']
-    }).then(users => {
+    User.findAll({})
+    .then(users => {
       if(!users) {
         console.error('Users not found');
       }
@@ -27,7 +26,6 @@ const userController = {
     }).then(user => {
       if(!user || user === null) {
         res.status(404).json({success: false, error:'User not found'});
-        console.error('User not found');
       } else {
       res.json({
         success: true,
@@ -45,7 +43,6 @@ const userController = {
 
   updateUser: (req,res) => {
     const userData = req.body;
-    console.log('userData:',userData)
     const userId = req.params.id;
     User.findByPk(userId)
     .then( user => {
