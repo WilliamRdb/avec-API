@@ -23,7 +23,7 @@ content-type: application/json
 GET http://localhost:3000/users
 
 ### Get User by Id
-GET http://localhost:3000/user/1
+GET http://localhost:3000/user/4
 
 
 ### Update user by Id
@@ -31,12 +31,16 @@ PUT http://localhost:3000/user/update/1
 content-type: application/json
 
 {
-  "id": 1,
-  "email": "test@test.fr",
-  "password": "1234",
   "first_name": "Jean",
-  "last_name": "Dujardin",
-  "role": "public"
+  "last_name": "Dujardin"
+}
+
+### Update user password by Id
+PUT http://localhost:3000/user/update/1
+content-type: application/json
+
+{
+  "password": "1234"
 }
 
 ### Delete User by User Id

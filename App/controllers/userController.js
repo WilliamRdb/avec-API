@@ -1,4 +1,5 @@
 const { User } = require('../models');
+const bcrypt = require('bcrypt');
 
 const userController = {
   getAllUsers: (req, res) => {
@@ -43,24 +44,46 @@ const userController = {
 
   updateUser: (req,res) => {
     const userData = req.body;
+    console.log(userData);
     const userId = req.params.id;
-    User.findByPk(userId)
-    .then( user => {
-      if(!user) {console.log('User not found');}
-      return user.update(userData);
-    })
-    .then(user => {
-      res.json({
-        success: true,
-        user
+    if(userData.password) {
+      const saltRounds = 10
+      const passwordHash = bcrypt.hash(userData.password, saltRounds, function(err, hash) {
+        User.findByPk(userId).then(user => {
+          if(!user) {console.log('User not found');}
+          return user.update({password:hash});
+        }).then(user => {
+          res.json({
+            success: true,
+            user
+          });
+        })
+        .catch(error => {
+          res.status(500).json({
+            success: false,
+            error: error.message
+          });
+        });
+      })
+    } else {
+      User.findByPk(userId)
+      .then( user => {
+        if(!user) {console.log('User not found');}
+        return user.update(userData);
+      })
+      .then(user => {
+        res.json({
+          success: true,
+          user
+        });
+      })
+      .catch(error => {
+        res.status(500).json({
+          success: false,
+          error: error.message
+        });
       });
-    })
-    .catch(error => {
-      res.status(500).json({
-        success: false,
-        error: error.message
-      });
-    });
+    }
   },  
 
   deleteUser: (req,res) => {
